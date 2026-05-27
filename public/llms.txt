@@ -1,0 +1,23 @@
+# SEO ไทย - คู่มือ GEO และ AEO
+
+> เว็บไซต์ภาษาไทยที่รวบรวมความรู้เกี่ยวกับ SEO (Search Engine Optimization), GEO (Generative Engine Optimization) และ AEO (Answer Engine Optimization) สำหรับช่วยให้ AI systems อย่าง ChatGPT, Claude, Perplexity และ Google AI Overviews ดึงข้อมูลและอ้างอิงเว็บไซต์ของคุณได้อย่างถูกต้อง
+
+เว็บไซต์นี้เป็น template/demo สำหรับนักพัฒนาและนักการตลาดดิจิทัลชาวไทยที่ต้องการสร้างเว็บไซต์ที่รองรับการค้นหาด้วย AI ในยุคใหม่ ครอบคลุมทั้งการทำ structured data (JSON-LD), การเขียนเนื้อหาแบบ AEO, การตั้งค่า robots.txt สำหรับ AI crawlers และการสร้าง llms.txt
+
+## บทความ (Blog)
+
+- [GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย](https://example.co.th/blog/geo-คืออะไร): อธิบาย GEO และ 5 ขั้นตอนปฏิบัติในการ optimize เว็บสำหรับ AI search engines
+- [กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย](https://example.co.th/blog/aeo-strategy-thai): วิธีทำ Answer Engine Optimization ให้ AI ดึงคำตอบจากเว็บของคุณ
+- [Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์](https://example.co.th/blog/structured-data-guide): ประเภท schema ที่สำคัญพร้อมตัวอย่าง TypeScript
+- [llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI](https://example.co.th/blog/llms-txt-explained): อธิบายมาตรฐาน llms.txt และวิธีสร้างไฟล์นี้สำหรับเว็บของคุณ
+- [Next.js 14 Metadata API: SEO ครบจบในที่เดียว](https://example.co.th/blog/nextjs-seo-thai): วิธีใช้ Next.js App Router Metadata API สำหรับ SEO/GEO/AEO
+
+## หน้าหลัก
+
+- [หน้าแรก](https://example.co.th): ภาพรวม SEO, GEO, AEO พร้อม FAQ
+- [FAQ - คำถามที่พบบ่อย](https://example.co.th/faq): 11 คำถาม-คำตอบเกี่ยวกับ SEO, GEO และ AEO ภาษาไทย
+- [เกี่ยวกับเรา](https://example.co.th/about): ข้อมูลทีมงานและจุดประสงค์ของเว็บไซต์
+
+## Optional
+
+- [llms-full.txt](https://example.co.th/llms-full.txt): ไฟล์ข้อความแบบเต็มรวมสรุปบทความทั้งหมดและ FAQ ทั้ง 11 ข้อ สำหรับ LLM ที่ต้องการบริบทครบถ้วน

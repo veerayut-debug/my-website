@@ -1,0 +1,114 @@
+---
+title: "GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย"
+description: "GEO หรือ Generative Engine Optimization คือการปรับแต่งเว็บไซต์เพื่อให้ AI search engines อย่าง Perplexity, Google AI Overviews และ Bing Copilot ดึงข้อมูลจากเว็บของคุณ บทความนี้อธิบายหลักการและ 5 ขั้นตอนปฏิบัติ"
+date: "2024-01-15"
+dateModified: "2024-01-15"
+author: "ทีมงาน SEO ไทย"
+tags: ["GEO", "AI Search", "SEO", "Perplexity", "Google AI Overviews"]
+---
+
+## GEO คืออะไร?
+
+**GEO (Generative Engine Optimization)** คือการปรับแต่งเว็บไซต์เพื่อให้ AI-powered search engines อย่าง Perplexity, Google AI Overviews, Bing Copilot และ ChatGPT Search ดึงข้อมูลจากเว็บของคุณไปใช้ตอบคำถามผู้ใช้ และอ้างอิงเว็บของคุณในคำตอบที่สร้างขึ้น
+
+ต่างจาก SEO แบบดั้งเดิมที่วัดผลด้วยอันดับใน SERP ความสำเร็จของ GEO วัดจากจำนวนครั้งที่เว็บของคุณถูก **อ้างอิง** (cited) ในคำตอบของ AI และ **traffic ที่เกิดจากการ click-through** จาก AI responses
+
+## ทำไม GEO จึงสำคัญในปี 2024?
+
+พฤติกรรมการค้นหาของผู้ใช้กำลังเปลี่ยนแปลงอย่างรวดเร็ว:
+
+- **Perplexity AI** มีผู้ใช้งานมากกว่า 10 ล้านคนต่อวัน
+- **Google AI Overviews** ปรากฏใน 60%+ ของ search results ในสหรัฐอเมริกา
+- **ChatGPT Search** เปิดตัวในปลายปี 2024 ให้ผู้ใช้ค้นหาข้อมูล real-time
+- **Bing Copilot** รวม AI ไว้ใน search experience หลักของ Microsoft
+
+ถ้าเว็บของคุณไม่ถูก AI อ้างอิง คุณกำลังพลาด traffic จำนวนมากที่เคยมาจาก organic search
+
+## GEO แตกต่างจาก SEO อย่างไร?
+
+| ด้าน | SEO แบบดั้งเดิม | GEO |
+|------|----------------|-----|
+| เป้าหมาย | ติดอันดับหน้าแรก Google | ถูก AI อ้างอิงในคำตอบ |
+| วัดผลด้วย | Rankings, Organic Traffic | Citations, AI Traffic |
+| เครื่องมือ | Backlinks, Keywords | Structured Data, Content Quality |
+| ความเร็ว | ใช้เวลาเดือน | เห็นผลเร็วกว่า |
+
+## 5 ขั้นตอน GEO สำหรับเว็บไทย
+
+### ขั้นตอนที่ 1: ติดตั้ง Structured Data ทุกหน้า
+
+JSON-LD Schema คือ "ภาษา" ที่ AI ใช้เข้าใจเนื้อหาเว็บ ควรติดตั้งอย่างน้อย:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ชื่อบทความ",
+  "datePublished": "2024-01-15",
+  "author": {
+    "@type": "Person",
+    "name": "ชื่อผู้เขียน"
+  }
+}
+```
+
+Schema สำคัญที่ต้องมี: `Organization`, `WebSite`, `Article`, `FAQPage`, `BreadcrumbList`
+
+### ขั้นตอนที่ 2: เขียนเนื้อหาแบบ Q&A
+
+AI ชอบเนื้อหาที่:
+- ตอบคำถามตรงๆ ใน 1-2 ประโยคแรก
+- ใช้หัวข้อ H2 เป็นคำถาม
+- มีข้อมูลที่ specific และ verifiable
+- อ้างอิงสถิติและแหล่งข้อมูลที่น่าเชื่อถือ
+
+### ขั้นตอนที่ 3: สร้าง llms.txt
+
+ไฟล์ `llms.txt` เป็นมาตรฐานใหม่ที่บอก LLMs ว่าเว็บของคุณมีอะไรบ้าง วางที่ root ของเว็บไซต์:
+
+```markdown
+# ชื่อเว็บไซต์
+
+> คำอธิบายสั้นๆ สำหรับ AI
+
+## บทความหลัก
+- [ชื่อบทความ](URL): คำอธิบาย
+```
+
+### ขั้นตอนที่ 4: ตั้งค่า robots.txt ให้ AI Crawlers เข้าถึงได้
+
+หลายเว็บไซต์บล็อก AI crawlers โดยไม่ตั้งใจ ตรวจสอบให้แน่ใจว่า `robots.txt` อนุญาต:
+
+```
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+```
+
+### ขั้นตอนที่ 5: อ้างอิงข้อมูลที่น่าเชื่อถือ
+
+AI ให้ความสำคัญกับ:
+- **E-E-A-T**: Experience, Expertise, Authoritativeness, Trustworthiness
+- สถิติจากแหล่งที่น่าเชื่อถือ (งานวิจัย, รายงานอุตสาหกรรม)
+- ข้อมูลที่ specific ไม่ใช่ทั่วไป
+- วันที่ publish และ update ที่ชัดเจน
+
+## วัดผล GEO อย่างไร?
+
+เครื่องมือที่ช่วยวัดผล GEO ได้แก่:
+
+1. **Google Search Console** — ดู clicks จาก AI Overviews
+2. **Perplexity** — ค้นหา brand name ดูว่าถูกอ้างอิงหรือไม่
+3. **Semrush / Ahrefs** — มี AI visibility tracking
+4. **Custom UTM Parameters** — ติด UTM บน link ใน llms.txt
+
+## สรุป
+
+GEO คือการลงทุนระยะยาวที่จำเป็นสำหรับเว็บไซต์ไทยในยุค AI search ขั้นตอนแรกที่ทำได้ทันทีคือติดตั้ง JSON-LD Structured Data ให้ครบ สร้าง llms.txt และตรวจสอบว่า robots.txt ไม่ได้บล็อก AI crawlers โดยไม่ตั้งใจ
+
+การผสม SEO, GEO และ AEO เข้าด้วยกันจะทำให้เว็บของคุณถูกค้นพบผ่านทั้ง traditional search และ AI search ในเวลาเดียวกัน

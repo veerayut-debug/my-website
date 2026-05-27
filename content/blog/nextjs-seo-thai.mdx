@@ -1,0 +1,197 @@
+---
+title: "Next.js 14 Metadata API: SEO, GEO และ AEO ครบจบในที่เดียว"
+description: "Next.js 14 App Router มี Metadata API ในตัวที่ครอบคลุม SEO ทั้งหมด ตั้งแต่ title/description ไปจนถึง Open Graph, sitemap และ robots.txt บทความนี้อธิบายวิธีใช้ทุกฟีเจอร์"
+date: "2024-01-05"
+dateModified: "2024-01-05"
+author: "ทีมงาน SEO ไทย"
+tags: ["Next.js", "Metadata API", "SEO", "App Router", "TypeScript"]
+---
+
+## Next.js Metadata API คืออะไร?
+
+**Next.js Metadata API** คือ built-in system ใน Next.js 13+ (App Router) สำหรับจัดการ SEO meta tags ทั้งหมดโดยไม่ต้องใช้ library อย่าง `next-seo` รองรับ title, description, Open Graph, Twitter Cards, robots, canonical URLs และอื่นๆ อีกมาก
+
+## Global Metadata ใน layout.tsx
+
+```typescript
+// src/app/layout.tsx
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://example.co.th'),
+  title: {
+    default: 'SEO ไทย — คู่มือ GEO และ AEO',
+    template: '%s | SEO ไทย',  // ใช้โดย child pages
+  },
+  description: 'แหล่งความรู้ภาษาไทยเกี่ยวกับ SEO, GEO และ AEO',
+  openGraph: {
+    type: 'website',
+    locale: 'th_TH',
+    siteName: 'SEO ไทย',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+```
+
+`metadataBase` สำคัญมาก — ทำให้ relative URL อย่าง `/og-image.png` กลายเป็น `https://example.co.th/og-image.png` โดยอัตโนมัติ
+
+## Static Metadata สำหรับ Pages ทั่วไป
+
+```typescript
+// src/app/faq/page.tsx
+export const metadata: Metadata = {
+  title: 'FAQ — คำถามที่พบบ่อย',
+  description: '11 คำถาม-คำตอบเกี่ยวกับ SEO, GEO และ AEO',
+  alternates: {
+    canonical: '/faq',  // relative URL — metadataBase จัดการ
+  },
+}
+```
+
+## Dynamic Metadata สำหรับ Blog Posts
+
+```typescript
+// src/app/blog/[slug]/page.tsx
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params  // params เป็น Promise ใน Next.js 14.2+
+  const { frontmatter } = getPostBySlug(slug)
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      type: 'article',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      publishedTime: frontmatter.date,
+      modifiedTime: frontmatter.dateModified,
+      authors: [frontmatter.author],
+    },
+  }
+}
+```
+
+## Sitemap แบบ Dynamic
+
+```typescript
+// src/app/sitemap.ts
+import type { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/mdx'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts()
+
+  return [
+    { url: 'https://example.co.th', priority: 1.0 },
+    { url: 'https://example.co.th/blog', priority: 0.9 },
+    ...posts.map(post => ({
+      url: `https://example.co.th/blog/${post.slug}`,
+      lastModified: new Date(post.dateModified),
+      priority: 0.8,
+    })),
+  ]
+}
+```
+
+Next.js จะ serve ไฟล์นี้ที่ `/sitemap.xml` โดยอัตโนมัติ
+
+## robots.txt ที่ Allow AI Crawlers
+
+```typescript
+// src/app/robots.ts
+import type { MetadataRoute } from 'next'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      { userAgent: '*', allow: '/', disallow: ['/api/'] },
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+    ],
+    sitemap: 'https://example.co.th/sitemap.xml',
+  }
+}
+```
+
+## Thai Font ด้วย next/font/google
+
+```typescript
+// src/app/layout.tsx
+import { Sarabun } from 'next/font/google'
+
+const sarabun = Sarabun({
+  subsets: ['thai', 'latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-sarabun',
+  display: 'swap',  // ป้องกัน FOIT
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="th" className={sarabun.variable}>
+      <body className="font-sans">{children}</body>
+    </html>
+  )
+}
+```
+
+`lang="th"` สำคัญมากสำหรับ search engines และ AI เพื่อระบุภาษา
+
+## JSON-LD ใน App Router
+
+ใน App Router ไม่มี built-in JSON-LD support แต่ทำได้ง่ายผ่าน component:
+
+```typescript
+// src/components/JsonLd.tsx
+export default function JsonLd({ data }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+
+// ใช้ใน page
+export default function BlogPost() {
+  return (
+    <>
+      <JsonLd data={articleSchema} />
+      <article>...</article>
+    </>
+  )
+}
+```
+
+หมายเหตุ: `dangerouslySetInnerHTML` ปลอดภัยในกรณีนี้เพราะ `data` มาจาก source code ไม่ใช่ user input
+
+## Static vs Dynamic Rendering
+
+Next.js 14 มี 3 rendering modes สำหรับ SEO:
+
+| Mode | ใช้เมื่อ | SEO ดีไหม |
+|------|---------|----------|
+| Static (SSG) | เนื้อหาไม่เปลี่ยน | ดีที่สุด |
+| Dynamic (SSR) | ต้องการ real-time data | ดี |
+| Client Component | Interactive UI เท่านั้น | ไม่ดี |
+
+สำหรับ blog และ FAQ ควรใช้ Static generation เสมอ
+
+## สรุป
+
+Next.js 14 App Router มีทุกอย่างที่ต้องการสำหรับ SEO/GEO/AEO ในตัว ไม่ต้องพึ่ง library เพิ่มเติม สิ่งสำคัญคือตั้งค่า `metadataBase`, ใช้ `title.template` สำหรับ child pages, ตั้ง `lang="th"` ใน html tag และ generate sitemap+robots.txt แบบ dynamic เพื่อให้ครอบคลุมทุกหน้าอัตโนมัติ

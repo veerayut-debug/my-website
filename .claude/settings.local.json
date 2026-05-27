@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm show *)",
+      "WebFetch(domain:llmstxt.org)",
+      "WebFetch(domain:schema.org)",
+      "WebFetch(domain:developers.google.com)"
+    ]
+  }
+}

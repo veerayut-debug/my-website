@@ -1,0 +1,88 @@
+SEO ไทย - คู่มือ GEO และ AEO
+เว็บไซต์: https://example.co.th
+ภาษา: ไทย
+อัปเดตล่าสุด: 2024-01-15
+
+=== บทความทั้งหมด ===
+
+--- บทความที่ 1 ---
+ชื่อ: GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย
+URL: https://example.co.th/blog/geo-คืออะไร
+วันที่: 2024-01-15
+ผู้เขียน: ทีมงาน SEO ไทย
+
+GEO หรือ Generative Engine Optimization คือการปรับแต่งเว็บไซต์เพื่อให้ AI search engines อย่าง Perplexity, Google AI Overviews และ Bing Copilot ดึงข้อมูลจากเว็บของคุณไปใช้ตอบคำถามผู้ใช้ ต่างจาก SEO แบบดั้งเดิมที่ต้องการให้ติดอันดับหน้าแรก GEO ต้องการให้เนื้อหาของคุณถูกอ้างอิงในคำตอบที่ AI สร้างขึ้น
+
+5 ขั้นตอน GEO สำหรับเว็บไทย:
+1. ติดตั้ง Structured Data (JSON-LD) ทุกหน้า
+2. เขียนเนื้อหาแบบ Q&A ที่ตรงประเด็น
+3. สร้าง llms.txt และ llms-full.txt
+4. ตั้งค่า robots.txt ให้ AI crawlers เข้าถึงได้
+5. อ้างอิงแหล่งข้อมูลและสถิติที่น่าเชื่อถือ
+
+--- บทความที่ 2 ---
+ชื่อ: กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย
+URL: https://example.co.th/blog/aeo-strategy-thai
+วันที่: 2024-01-12
+ผู้เขียน: ทีมงาน SEO ไทย
+
+AEO หรือ Answer Engine Optimization คือการทำให้ AI answer engines เลือกใช้เนื้อหาของคุณเป็นคำตอบ หลักการสำคัญคือเขียนหัวข้อ H2 เป็นคำถาม แล้วตอบตรงๆ ใน 1-2 ประโยคแรก ก่อนขยายความ ใช้ FAQPage schema เพื่อให้ AI เข้าใจโครงสร้างคำถาม-คำตอบ และสร้างเนื้อหาที่ตอบ Who, What, Where, When, Why, How
+
+--- บทความที่ 3 ---
+ชื่อ: Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์
+URL: https://example.co.th/blog/structured-data-guide
+วันที่: 2024-01-10
+ผู้เขียน: ทีมงาน SEO ไทย
+
+JSON-LD คือรูปแบบ structured data ที่ Google, Bing และ AI search engines แนะนำ Schema ที่สำคัญที่สุดสำหรับ GEO/AEO ได้แก่ Organization, WebSite (พร้อม SearchAction), Article, FAQPage, BreadcrumbList และ Person การติดตั้งผ่าน Next.js App Router ทำได้ง่ายด้วย component JsonLd ที่ render เป็น script tag
+
+--- บทความที่ 4 ---
+ชื่อ: llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI
+URL: https://example.co.th/blog/llms-txt-explained
+วันที่: 2024-01-08
+ผู้เขียน: ทีมงาน SEO ไทย
+
+llms.txt เป็นมาตรฐานใหม่ (llmstxt.org) ที่วางไฟล์ Markdown ไว้ที่ /llms.txt บนเว็บไซต์ เพื่ออธิบายเนื้อหาและโครงสร้างเว็บให้ LLMs เข้าใจได้ง่ายขึ้น ควรมีทั้ง llms.txt (สรุปย่อ) และ llms-full.txt (ข้อมูลเต็ม) คล้ายกับ robots.txt แต่สำหรับ AI แทน search crawlers
+
+--- บทความที่ 5 ---
+ชื่อ: Next.js 14 Metadata API: SEO ครบจบในที่เดียว
+URL: https://example.co.th/blog/nextjs-seo-thai
+วันที่: 2024-01-05
+ผู้เขียน: ทีมงาน SEO ไทย
+
+Next.js 14 App Router มี Metadata API ในตัวที่รองรับ title template, Open Graph, Twitter Cards, canonical URLs และ robots meta ทั้งหมด generateMetadata() function ช่วยสร้าง metadata แบบ dynamic สำหรับแต่ละ blog post โดยไม่ต้องใช้ library เพิ่มเติม
+
+=== FAQ ทั้งหมด ===
+
+Q: SEO, GEO และ AEO แตกต่างกันอย่างไร?
+A: SEO (Search Engine Optimization) คือการทำให้เว็บติดอันดับใน Google แบบดั้งเดิม GEO (Generative Engine Optimization) คือการทำให้ AI search engines อย่าง Perplexity หรือ Google AI Overviews อ้างอิงเนื้อหาของคุณ ส่วน AEO (Answer Engine Optimization) เน้นให้ AI answer engines เลือกใช้เนื้อหาเป็นคำตอบตรงๆ
+
+Q: GEO คืออะไรและทำไมจึงสำคัญ?
+A: GEO คือการปรับแต่งเว็บไซต์เพื่อให้ AI search engines อย่าง Perplexity, Google AI Overviews และ Bing Copilot ดึงข้อมูลจากเว็บของคุณไปใช้ตอบคำถาม มีความสำคัญเพราะผู้ใช้งานอินเทอร์เน็ตหันมาใช้ AI search engines มากขึ้น การถูกอ้างอิงใน AI responses หมายถึง traffic และ brand awareness ที่เพิ่มขึ้น
+
+Q: AEO ต้องทำอะไรบ้าง?
+A: AEO ต้องทำ 5 อย่างหลัก: (1) ติดตั้ง FAQPage JSON-LD schema, (2) เขียนหัวข้อ H2 เป็นคำถาม, (3) ตอบคำถามตรงๆ ในย่อหน้าแรก, (4) ใช้ structured content รูปแบบ Q&A, (5) ครอบคลุม Who, What, Where, When, Why, How
+
+Q: Structured Data คืออะไรและจำเป็นสำหรับ AI หรือเปล่า?
+A: Structured Data คือข้อมูลที่จัดรูปแบบตาม schema.org เพื่อให้ search engines และ AI เข้าใจเนื้อหาเว็บได้ดีขึ้น JSON-LD เป็นรูปแบบที่แนะนำ มีความจำเป็นมากสำหรับ AI เพราะช่วยให้ระบบ AI เข้าใจบริบทและความสัมพันธ์ของข้อมูลในเว็บไซต์
+
+Q: llms.txt คืออะไร?
+A: llms.txt เป็นไฟล์ Markdown ที่วางไว้ที่ /llms.txt บนเว็บไซต์ ตามมาตรฐาน llmstxt.org เพื่ออธิบายเนื้อหาเว็บให้ LLMs อย่าง Claude, ChatGPT เข้าใจโครงสร้างและจุดประสงค์ของเว็บไซต์ได้ง่ายขึ้น คล้ายกับ robots.txt แต่ออกแบบมาสำหรับ AI โดยเฉพาะ
+
+Q: robots.txt ควรตั้งค่าอย่างไรสำหรับ AI crawlers?
+A: ควร allow AI crawlers สำคัญ ได้แก่ GPTBot (OpenAI), ClaudeBot (Anthropic), Google-Extended (Google), PerplexityBot (Perplexity) โดยเพิ่ม rule แยกสำหรับแต่ละ user-agent และตั้งค่า Allow: / เพื่อให้เข้าถึงเนื้อหาทั้งหมด
+
+Q: Open Graph คืออะไรและช่วย SEO/GEO อย่างไร?
+A: Open Graph เป็น meta tags ที่ควบคุมการแสดงผลเมื่อแชร์ลิงก์บน social media และ AI tools บางตัว ช่วย GEO โดยให้ข้อมูลชัดเจนเกี่ยวกับ title, description และ image ของแต่ละหน้า ซึ่ง AI ใช้ในการสรุปข้อมูลเว็บ
+
+Q: Next.js ดีสำหรับ SEO/GEO/AEO หรือเปล่า?
+A: ใช่ Next.js เป็นหนึ่งใน framework ที่ดีที่สุดสำหรับ SEO/GEO/AEO เพราะรองรับ Server-Side Rendering (SSR) และ Static Site Generation (SSG), มี Metadata API ในตัว, รองรับ JSON-LD ผ่าน script tags, และสร้าง robots.txt กับ sitemap.xml แบบ dynamic ได้
+
+Q: Schema ไหนสำคัญที่สุดสำหรับ GEO?
+A: Schema ที่สำคัญที่สุดสำหรับ GEO คือ Organization (บอกว่าเว็บเป็นขององค์กรอะไร), WebSite (พร้อม SearchAction), Article (สำหรับบทความ), FAQPage (สำหรับ Q&A) และ BreadcrumbList Schema เหล่านี้ช่วยให้ AI เข้าใจบริบทและโครงสร้างเว็บได้ดีขึ้น
+
+Q: เนื้อหาต้องเขียนอย่างไรให้ AI ดึงไปตอบ?
+A: เขียนตรงๆ สั้นๆ ชัดเจน ใช้หัวข้อเป็นคำถาม ตอบในย่อหน้าแรกทันที อ้างอิงข้อมูลและสถิติ ใช้ lists และ tables สำหรับข้อมูลที่เปรียบเทียบได้ หลีกเลี่ยงเนื้อหาที่คลุมเครือ
+
+Q: ต้องอัปเดตเนื้อหาบ่อยแค่ไหนสำหรับ GEO?
+A: ควรอัปเดตเนื้อหาอย่างน้อยเดือนละครั้งและอัปเดต dateModified ใน schema เสมอ AI search engines ชอบเนื้อหาที่ทันสมัยและมีการอัปเดตสม่ำเสมอ บทความหลักควรตรวจสอบทุก 3-6 เดือนว่าข้อมูลยังถูกต้องหรือไม่

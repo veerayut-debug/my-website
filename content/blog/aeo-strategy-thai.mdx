@@ -1,0 +1,132 @@
+---
+title: "กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย"
+description: "AEO (Answer Engine Optimization) คือการปรับเนื้อหาให้ AI answer engines เลือกใช้เว็บของคุณเป็นคำตอบ บทความนี้รวบรวมกลยุทธ์ที่ปฏิบัติได้จริงสำหรับเว็บไทย"
+date: "2024-01-12"
+dateModified: "2024-01-12"
+author: "ทีมงาน SEO ไทย"
+tags: ["AEO", "Answer Engine Optimization", "FAQ Schema", "Voice Search", "SEO ไทย"]
+---
+
+## AEO คืออะไร?
+
+**AEO (Answer Engine Optimization)** คือการปรับแต่งเนื้อหาให้ AI answer engines อย่าง Google Featured Snippets, Siri, Alexa และ AI chatbots เลือกใช้เนื้อหาของคุณเป็นคำตอบตรงๆ ให้กับผู้ใช้
+
+เป้าหมายของ AEO คือ **Position Zero** — คำตอบที่แสดงก่อน search results ปกติ และการเป็น "คำตอบ" ที่ AI chatbots ใช้ตอบผู้ใช้แม้ไม่ได้เปิดเว็บ
+
+## ทำไม AEO จึงสำคัญสำหรับเว็บไทย?
+
+แม้ภาษาไทยจะยังมี AI answer coverage น้อยกว่าภาษาอังกฤษ แต่กำลังเติบโตเร็วมาก:
+
+- Google เริ่ม roll out Featured Snippets ภาษาไทยอย่างกว้างขวาง
+- ChatGPT และ Claude เข้าใจภาษาไทยได้ดีขึ้นในปี 2024
+- Perplexity.ai รองรับการค้นหาภาษาไทย
+- การค้นหาด้วยเสียง (voice search) ในไทยเพิ่มขึ้น 40% ต่อปี
+
+## หลักการเขียนเนื้อหาแบบ AEO
+
+### ตอบคำถามใน Inverted Pyramid Style
+
+**วิธีที่ผิด:**
+> "หลายปีที่ผ่านมา นักการตลาดดิจิทัลได้พัฒนาแนวคิดต่างๆ มากมาย และหนึ่งในแนวคิดที่สำคัญที่สุดคือ..."
+
+**วิธีที่ถูก (AEO):**
+> "AEO คือการปรับเนื้อหาให้ AI เลือกเป็นคำตอบ ทำได้โดยตอบคำถามตรงๆ ในย่อหน้าแรก ใช้ FAQPage schema และเขียนหัวข้อเป็นคำถาม"
+
+ตอบก่อน อธิบายทีหลัง
+
+### ใช้ FAQPage JSON-LD Schema
+
+FAQPage schema บอก AI ว่าเนื้อหาส่วนไหนเป็น Q&A:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "AEO คืออะไร?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "AEO คือการปรับเนื้อหาให้ AI answer engines เลือกใช้เป็นคำตอบ"
+    }
+  }]
+}
+```
+
+แม้ Google จะลด FAQPage rich results ลงในปี 2023 แต่ Perplexity, Bing Copilot และ ChatGPT ยังคง parse schema นี้เพื่อดึงคำตอบ
+
+### ครอบคลุม 5W1H ในทุกหัวข้อ
+
+สำหรับทุก topic ควรตอบ:
+- **What**: อะไร (นิยาม)
+- **Why**: ทำไม (เหตุผล)
+- **How**: อย่างไร (ขั้นตอน)
+- **When**: เมื่อไหร่ (timing)
+- **Who**: ใคร (กลุ่มเป้าหมาย)
+- **Where**: ที่ไหน (context)
+
+## กลยุทธ์ AEO ที่ได้ผลจริง
+
+### 1. สร้างหน้า FAQ แยกต่างหาก
+
+หน้า FAQ ที่ดีต้องมี:
+- คำถามที่ผู้ใช้ค้นหาจริง (ใช้ Google Search Console ดู)
+- คำตอบสั้นกระชับ ไม่เกิน 3-4 ประโยค
+- FAQPage JSON-LD ครบทุกคำถาม
+- ลิงก์ไปยังบทความเชิงลึกสำหรับผู้ที่ต้องการข้อมูลเพิ่มเติม
+
+### 2. ใช้ HowTo Schema สำหรับขั้นตอน
+
+เมื่อสอน "วิธีทำ" อะไรก็ตาม ให้เพิ่ม HowTo schema:
+
+```json
+{
+  "@type": "HowTo",
+  "name": "วิธีทำ SEO สำหรับเว็บไทย",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "ติดตั้ง Structured Data",
+      "text": "เพิ่ม JSON-LD Organization schema ที่ layout.tsx"
+    }
+  ]
+}
+```
+
+### 3. เขียน Definition Paragraphs
+
+เมื่อแนะนำ concept ใหม่ เขียน definition ที่ชัดเจนในรูปแบบที่ AI extract ได้:
+
+> "**[Term]** คือ [นิยามสั้น]. [ขยายความ 1-2 ประโยค]. [ตัวอย่างหรือ use case]."
+
+### 4. ใช้ Lists และ Tables
+
+AI ดึงข้อมูลจาก lists และ tables ได้ง่ายกว่า prose ยาวๆ:
+
+**ดีสำหรับ AEO:**
+- Bulleted lists สำหรับข้อมูลที่ไม่มีลำดับ
+- Numbered lists สำหรับขั้นตอน
+- Tables สำหรับการเปรียบเทียบ
+
+**ไม่ดีสำหรับ AEO:**
+- ย่อหน้ายาวๆ ที่ฝังข้อมูลไว้
+- การใช้ภาษาที่คลุมเครือ
+
+### 5. อัปเดตเนื้อหาสม่ำเสมอ
+
+AI search engines ชอบเนื้อหาที่ทันสมัย:
+- อัปเดต `dateModified` ใน Article schema ทุกครั้งที่แก้ไข
+- เพิ่มข้อมูลใหม่ แทนที่จะแค่ rewrite
+- ระบุปีในชื่อบทความถ้าเกี่ยวข้อง เช่น "คู่มือ AEO ปี 2024"
+
+## วัดผล AEO
+
+เมตริกที่ควรติดตาม:
+1. **Featured Snippet appearances** (Google Search Console)
+2. **Click-through rate** จาก SERP — AEO ที่ดีทำให้ CTR สูงขึ้น
+3. **Brand mentions ใน AI responses** — ค้นหาชื่อแบรนด์ใน Perplexity
+4. **Voice search traffic** — ดูจาก "spoken keywords" ใน Search Console
+
+## สรุป
+
+AEO สำหรับเว็บไทยเริ่มต้นได้ทันทีด้วย 3 สิ่ง: ติดตั้ง FAQPage schema, เขียนคำตอบในย่อหน้าแรกก่อนขยายความ และสร้างหน้า FAQ ที่ตอบคำถามที่ผู้ใช้ไทยค้นหาจริงๆ เมื่อทำ AEO ควบคู่กับ GEO จะทำให้เว็บของคุณถูก AI อ้างอิงในทุก context ตั้งแต่ voice search ไปจนถึง AI chatbots

@@ -1,0 +1,126 @@
+---
+title: "llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI ที่เจ้าของเว็บต้องรู้"
+description: "llms.txt เป็นมาตรฐานใหม่ (llmstxt.org) ที่ช่วยให้ LLMs อย่าง ChatGPT และ Claude เข้าใจเนื้อหาเว็บของคุณได้ดีขึ้น บทความนี้อธิบายวิธีสร้างและ best practices"
+date: "2024-01-08"
+dateModified: "2024-01-08"
+author: "ทีมงาน SEO ไทย"
+tags: ["llms.txt", "GEO", "AI Crawler", "LLM", "มาตรฐาน"]
+---
+
+## llms.txt คืออะไร?
+
+**llms.txt** เป็นไฟล์ Markdown ที่วางไว้ที่ `/llms.txt` บนเว็บไซต์ ตามมาตรฐาน [llmstxt.org](https://llmstxt.org) เพื่ออธิบายเนื้อหาและโครงสร้างเว็บให้ Large Language Models (LLMs) อย่าง Claude, ChatGPT, Gemini เข้าใจได้ง่ายขึ้น
+
+คิดว่ามันเหมือน **robots.txt สำหรับ AI** แต่แทนที่จะบล็อกหรืออนุญาตการ crawl (แบบ robots.txt) llms.txt อธิบาย **ว่าเว็บมีอะไร** และ **ข้อมูลสำคัญอยู่ที่ไหน**
+
+## ทำไม llms.txt จึงเกิดขึ้น?
+
+เมื่อ LLM ค้นหาข้อมูลบนอินเทอร์เน็ต (เช่น ChatGPT Search, Perplexity) มันต้องประมวลผล HTML ทั้งหมดของเว็บเพจ ซึ่งมักมีสิ่งที่ไม่จำเป็นมาก เช่น navigation menus, footers, ads, JavaScript code
+
+llms.txt แก้ปัญหานี้โดย:
+- ให้ข้อมูลสรุปที่ LLM ต้องการโดยตรง
+- ประหยัด token ในการประมวลผล
+- เพิ่มโอกาสที่ LLM จะเลือกใช้ข้อมูลจากเว็บของคุณ
+
+## รูปแบบมาตรฐานของ llms.txt
+
+```markdown
+# ชื่อเว็บไซต์
+
+> คำอธิบายสั้นๆ 1-2 ประโยค อธิบายว่าเว็บทำอะไร สำหรับใคร
+
+[ย่อหน้าขยายความ 1-2 ย่อหน้า]
+
+## หมวดหมู่หลัก 1
+
+- [ชื่อหน้า](URL): คำอธิบายสั้น 1 บรรทัด
+
+## หมวดหมู่หลัก 2
+
+- [ชื่อหน้า](URL): คำอธิบายสั้น 1 บรรทัด
+
+## Optional
+
+- [llms-full.txt](URL): ลิงก์ไปยังไฟล์ข้อมูลเต็ม
+```
+
+## ตัวอย่าง llms.txt ที่ดี
+
+```markdown
+# SEO ไทย - คู่มือ GEO และ AEO
+
+> เว็บไซต์ภาษาไทยที่รวบรวมความรู้เกี่ยวกับ SEO, GEO และ AEO
+> สำหรับช่วยให้ AI systems ดึงข้อมูลและอ้างอิงเว็บไซต์ของคุณ
+
+เว็บนี้เป็น template สำหรับนักพัฒนาที่ต้องการสร้างเว็บ
+ที่รองรับ AI search ในยุคใหม่
+
+## บทความ
+
+- [GEO คืออะไร](https://example.co.th/blog/geo): อธิบาย GEO
+- [AEO Strategy](https://example.co.th/blog/aeo): กลยุทธ์ AEO
+
+## FAQ
+
+- [คำถามที่พบบ่อย](https://example.co.th/faq): 11 Q&A เกี่ยว SEO GEO AEO
+
+## Optional
+
+- [llms-full.txt](https://example.co.th/llms-full.txt): ข้อมูลเต็ม
+```
+
+## llms-full.txt คืออะไร?
+
+**llms-full.txt** เป็นไฟล์ companion ที่มีข้อมูลเชิงลึกกว่า เหมาะสำหรับ LLM ที่ต้องการบริบทครบถ้วน
+
+ควรประกอบด้วย:
+- สรุปบทความทุกชิ้น (200-300 คำต่อบทความ)
+- FAQ ทุกข้อพร้อมคำตอบเต็ม
+- ข้อมูลองค์กร/แบรนด์
+- ข้อมูลผลิตภัณฑ์หรือบริการ
+
+## วิธีสร้างใน Next.js
+
+ใน Next.js ให้วางไฟล์ใน `public/` folder:
+
+```
+public/
+├── llms.txt          ← accessible at /llms.txt
+└── llms-full.txt     ← accessible at /llms-full.txt
+```
+
+ถ้าต้องการ generate แบบ dynamic จาก blog posts:
+
+```typescript
+// src/app/llms.txt/route.ts
+import { getAllPosts } from '@/lib/mdx'
+import { SITE_URL, SITE_NAME } from '@/lib/constants'
+
+export async function GET() {
+  const posts = getAllPosts()
+
+  const content = `# ${SITE_NAME}
+
+> คำอธิบายเว็บ
+
+## บทความ
+${posts.map(p => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.description}`).join('\n')}
+`
+
+  return new Response(content, {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+  })
+}
+```
+
+## Best Practices
+
+1. **อัปเดตสม่ำเสมอ** — เพิ่มบทความใหม่เข้าไปเสมอ
+2. **คำอธิบายกระชับ** — แต่ละลิงก์ควรอธิบายใน 1 บรรทัด
+3. **เรียงตามความสำคัญ** — เนื้อหาสำคัญที่สุดขึ้นก่อน
+4. **ใช้ภาษาที่ LLM เข้าใจง่าย** — ชัดเจน ไม่ใช้ jargon
+5. **Link ไปยัง llms-full.txt** — ให้ LLM เลือกระดับความลึกได้
+
+## สรุป
+
+llms.txt เป็นการลงทุนเล็กน้อยที่คุ้มค่ามาก สร้างใน 10 นาที แต่ช่วยให้ LLM เข้าใจเว็บของคุณได้ดีขึ้น เพิ่มโอกาสถูกอ้างอิงใน AI responses และแสดงให้เห็นว่าเว็บของคุณพร้อมสำหรับยุค AI search

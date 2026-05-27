@@ -1,0 +1,202 @@
+---
+title: "Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์สำหรับ GEO"
+description: "JSON-LD Structured Data คือกุญแจสำคัญที่ช่วยให้ AI search engines เข้าใจเนื้อหาเว็บของคุณ บทความนี้ครอบคลุม schema ทุกประเภทที่จำเป็นพร้อมตัวอย่าง TypeScript"
+date: "2024-01-10"
+dateModified: "2024-01-10"
+author: "ทีมงาน SEO ไทย"
+tags: ["Structured Data", "JSON-LD", "Schema.org", "TypeScript", "Next.js"]
+---
+
+## Structured Data คืออะไร?
+
+**Structured Data** คือข้อมูลที่จัดรูปแบบตามมาตรฐาน schema.org เพื่อให้ search engines และ AI systems เข้าใจ context และความสัมพันธ์ของข้อมูลในเว็บไซต์ได้ดีขึ้น โดยไม่ต้องพึ่งพาการอ่านข้อความธรรมดา
+
+**JSON-LD (JavaScript Object Notation for Linked Data)** คือรูปแบบที่ Google, Bing และ AI search engines แนะนำมากที่สุด เพราะเพิ่มได้ง่ายผ่าน `<script>` tag โดยไม่ต้องแก้ HTML
+
+## Schema ประเภทใดสำคัญสำหรับ GEO?
+
+### 1. Organization Schema — บอกว่าเว็บเป็นของใคร
+
+ติดตั้งในทุกหน้าผ่าน root layout:
+
+```typescript
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ชื่อบริษัท",
+  "url": "https://example.co.th",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://example.co.th/logo.png",
+    "width": 200,
+    "height": 60
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "Thai"
+  }
+}
+```
+
+### 2. WebSite Schema — เปิดใช้ Sitelinks Search Box
+
+```typescript
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ชื่อเว็บ",
+  "url": "https://example.co.th",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.co.th/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+```
+
+### 3. Article Schema — สำหรับบทความทุกชิ้น
+
+Schema ที่ครบถ้วนสำหรับ GEO ต้องมี field เหล่านี้:
+
+```typescript
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ชื่อบทความ (max 110 ตัวอักษร)",
+  "description": "คำอธิบาย",
+  "datePublished": "2024-01-10T00:00:00+07:00",
+  "dateModified": "2024-01-10T00:00:00+07:00",
+  "inLanguage": "th",
+  "author": {
+    "@type": "Person",
+    "name": "ชื่อผู้เขียน",
+    "url": "https://example.co.th/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ชื่อเว็บ",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.co.th/logo.png"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://example.co.th/images/article-og.png",
+    "width": 1200,
+    "height": 630
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.co.th/blog/slug"
+  }
+}
+```
+
+### 4. FAQPage Schema — สำคัญมากสำหรับ AEO
+
+```typescript
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "คำถาม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "คำตอบที่ชัดเจน ตรงประเด็น"
+      }
+    }
+  ]
+}
+```
+
+### 5. BreadcrumbList Schema — บอก AI ว่าหน้านี้อยู่ที่ไหนในโครงสร้าง
+
+```typescript
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "หน้าแรก",
+      "item": "https://example.co.th"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "บทความ",
+      "item": "https://example.co.th/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ชื่อบทความ",
+      "item": "https://example.co.th/blog/slug"
+    }
+  ]
+}
+```
+
+## วิธีติดตั้ง JSON-LD ใน Next.js 14
+
+สร้าง component `JsonLd.tsx` ที่ reusable:
+
+```typescript
+// src/components/JsonLd.tsx
+interface JsonLdProps {
+  data: Record<string, unknown> | Record<string, unknown>[]
+}
+
+export default function JsonLd({ data }: JsonLdProps) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
+```
+
+ใช้งานในแต่ละหน้า:
+
+```typescript
+// src/app/blog/[slug]/page.tsx
+import JsonLd from '@/components/JsonLd'
+
+export default function BlogPost() {
+  return (
+    <>
+      <JsonLd data={articleSchema} />
+      <article>...</article>
+    </>
+  )
+}
+```
+
+## ตรวจสอบ Structured Data
+
+เครื่องมือตรวจสอบ:
+
+1. **Google Rich Results Test** — `search.google.com/test/rich-results`
+2. **Schema.org Validator** — `validator.schema.org`
+3. **Google Search Console** — ดู rich results ที่ถูก index
+4. **Chrome DevTools** — ค้นหา `ld+json` ใน Elements tab
+
+## ข้อผิดพลาดที่พบบ่อย
+
+- **Missing required fields**: `datePublished`, `author`, `publisher` ใน Article schema
+- **Wrong image size**: OG image ต้องเป็น 1200x630px
+- **Duplicate schemas**: ใส่ Organization schema หลายครั้งในหน้าเดียว
+- **Invalid dates**: ต้องเป็น ISO 8601 format (`2024-01-10` หรือ `2024-01-10T08:00:00+07:00`)
+
+## สรุป
+
+Structured Data ด้วย JSON-LD คือรากฐานของทั้ง SEO, GEO และ AEO เริ่มต้นด้วย Organization + WebSite schema ในทุกหน้า จากนั้น Article schema สำหรับบทความ และ FAQPage schema สำหรับหน้า FAQ เพียงเท่านี้ก็ช่วยให้ AI search engines เข้าใจเว็บของคุณได้ดีขึ้นอย่างมีนัยสำคัญ
