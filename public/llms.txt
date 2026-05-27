@@ -6,18 +6,18 @@
 
 ## บทความ (Blog)
 
-- [GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย](https://example.co.th/blog/geo-คืออะไร): อธิบาย GEO และ 5 ขั้นตอนปฏิบัติในการ optimize เว็บสำหรับ AI search engines
-- [กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย](https://example.co.th/blog/aeo-strategy-thai): วิธีทำ Answer Engine Optimization ให้ AI ดึงคำตอบจากเว็บของคุณ
-- [Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์](https://example.co.th/blog/structured-data-guide): ประเภท schema ที่สำคัญพร้อมตัวอย่าง TypeScript
-- [llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI](https://example.co.th/blog/llms-txt-explained): อธิบายมาตรฐาน llms.txt และวิธีสร้างไฟล์นี้สำหรับเว็บของคุณ
-- [Next.js 14 Metadata API: SEO ครบจบในที่เดียว](https://example.co.th/blog/nextjs-seo-thai): วิธีใช้ Next.js App Router Metadata API สำหรับ SEO/GEO/AEO
+- [GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย](https://my-website-nct-dev.vercel.app/blog/geo-คืออะไร): อธิบาย GEO และ 5 ขั้นตอนปฏิบัติในการ optimize เว็บสำหรับ AI search engines
+- [กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย](https://my-website-nct-dev.vercel.app/blog/aeo-strategy-thai): วิธีทำ Answer Engine Optimization ให้ AI ดึงคำตอบจากเว็บของคุณ
+- [Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์](https://my-website-nct-dev.vercel.app/blog/structured-data-guide): ประเภท schema ที่สำคัญพร้อมตัวอย่าง TypeScript
+- [llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI](https://my-website-nct-dev.vercel.app/blog/llms-txt-explained): อธิบายมาตรฐาน llms.txt และวิธีสร้างไฟล์นี้สำหรับเว็บของคุณ
+- [Next.js 14 Metadata API: SEO ครบจบในที่เดียว](https://my-website-nct-dev.vercel.app/blog/nextjs-seo-thai): วิธีใช้ Next.js App Router Metadata API สำหรับ SEO/GEO/AEO
 
 ## หน้าหลัก
 
-- [หน้าแรก](https://example.co.th): ภาพรวม SEO, GEO, AEO พร้อม FAQ
-- [FAQ - คำถามที่พบบ่อย](https://example.co.th/faq): 11 คำถาม-คำตอบเกี่ยวกับ SEO, GEO และ AEO ภาษาไทย
-- [เกี่ยวกับเรา](https://example.co.th/about): ข้อมูลทีมงานและจุดประสงค์ของเว็บไซต์
+- [หน้าแรก](https://my-website-nct-dev.vercel.app): ภาพรวม SEO, GEO, AEO พร้อม FAQ
+- [FAQ - คำถามที่พบบ่อย](https://my-website-nct-dev.vercel.app/faq): 11 คำถาม-คำตอบเกี่ยวกับ SEO, GEO และ AEO ภาษาไทย
+- [เกี่ยวกับเรา](https://my-website-nct-dev.vercel.app/about): ข้อมูลทีมงานและจุดประสงค์ของเว็บไซต์
 
 ## Optional
 
-- [llms-full.txt](https://example.co.th/llms-full.txt): ไฟล์ข้อความแบบเต็มรวมสรุปบทความทั้งหมดและ FAQ ทั้ง 11 ข้อ สำหรับ LLM ที่ต้องการบริบทครบถ้วน
+- [llms-full.txt](https://my-website-nct-dev.vercel.app/llms-full.txt): ไฟล์ข้อความแบบเต็มรวมสรุปบทความทั้งหมดและ FAQ ทั้ง 11 ข้อ สำหรับ LLM ที่ต้องการบริบทครบถ้วน

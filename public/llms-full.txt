@@ -1,5 +1,5 @@
 SEO ไทย - คู่มือ GEO และ AEO
-เว็บไซต์: https://example.co.th
+เว็บไซต์: https://my-website-nct-dev.vercel.app
 ภาษา: ไทย
 อัปเดตล่าสุด: 2024-01-15
 
@@ -7,7 +7,7 @@ SEO ไทย - คู่มือ GEO และ AEO
 
 --- บทความที่ 1 ---
 ชื่อ: GEO คืออะไร? Generative Engine Optimization สำหรับเว็บไทย
-URL: https://example.co.th/blog/geo-คืออะไร
+URL: https://my-website-nct-dev.vercel.app/blog/geo-คืออะไร
 วันที่: 2024-01-15
 ผู้เขียน: ทีมงาน SEO ไทย
 
@@ -22,7 +22,7 @@ GEO หรือ Generative Engine Optimization คือการปรับ�
 
 --- บทความที่ 2 ---
 ชื่อ: กลยุทธ์ AEO สำหรับเว็บไซต์ภาษาไทย
-URL: https://example.co.th/blog/aeo-strategy-thai
+URL: https://my-website-nct-dev.vercel.app/blog/aeo-strategy-thai
 วันที่: 2024-01-12
 ผู้เขียน: ทีมงาน SEO ไทย
 
@@ -30,7 +30,7 @@ AEO หรือ Answer Engine Optimization คือการทำให้ AI
 
 --- บทความที่ 3 ---
 ชื่อ: Structured Data และ JSON-LD: คู่มือฉบับสมบูรณ์
-URL: https://example.co.th/blog/structured-data-guide
+URL: https://my-website-nct-dev.vercel.app/blog/structured-data-guide
 วันที่: 2024-01-10
 ผู้เขียน: ทีมงาน SEO ไทย
 
@@ -38,7 +38,7 @@ JSON-LD คือรูปแบบ structured data ที่ Google, Bing แ�
 
 --- บทความที่ 4 ---
 ชื่อ: llms.txt คืออะไร? มาตรฐานใหม่สำหรับ AI
-URL: https://example.co.th/blog/llms-txt-explained
+URL: https://my-website-nct-dev.vercel.app/blog/llms-txt-explained
 วันที่: 2024-01-08
 ผู้เขียน: ทีมงาน SEO ไทย
 
@@ -46,7 +46,7 @@ llms.txt เป็นมาตรฐานใหม่ (llmstxt.org) ที่�
 
 --- บทความที่ 5 ---
 ชื่อ: Next.js 14 Metadata API: SEO ครบจบในที่เดียว
-URL: https://example.co.th/blog/nextjs-seo-thai
+URL: https://my-website-nct-dev.vercel.app/blog/nextjs-seo-thai
 วันที่: 2024-01-05
 ผู้เขียน: ทีมงาน SEO ไทย
 
